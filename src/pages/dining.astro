@@ -18,7 +18,7 @@ import SectionHeading from '../components/SectionHeading.astro';
           { day: 'Wednesday', name: 'Wing Wednesday', time: '5:30 – 7:30 PM', price: '$9', desc: 'Crispy wings with your choice of sauce — buffalo, BBQ, garlic parmesan, lemon pepper, and our secret Elks sauce.', color: 'from-amber-500 to-orange-500', img: '/images/wings.jpg' },
           { day: 'Thursday', name: 'Steak Night', time: '6:00 – 8:00 PM', price: '$15', desc: 'Hand-cut ribeye or sirloin grilled to perfection, served with baked potato, salad, and Texas toast.', color: 'from-red-700 to-red-900', img: '/images/steak.jpg' },
           { day: 'Friday', name: 'Burger Night', time: '5:30 – 7:30 PM', price: '$10', desc: 'Thick, juicy hand-pattied burgers with all the toppings. Choose from classic, bacon, mushroom Swiss, or our Elk Burger special.', color: 'from-yellow-600 to-amber-700', img: '/images/burgers.jpg' },
-          { day: 'Saturday', name: 'Chef\'s Special', time: '6:00 – 8:00 PM', price: 'Varies', desc: 'Our kitchen crew gets creative! Past specials include fried catfish, shrimp boil, BBQ plates, and more. Check our events page!', color: 'from-elks-purple to-purple-700', img: '/images/dining-food.jpg' },
+          { day: 'Saturday', name: 'Chef\'s Special', time: '6:00 – 8:00 PM', price: 'Varies', desc: 'Our kitchen crew gets creative! Past specials include fried catfish, shrimp boil, BBQ plates, and more. Check our events page!', color: 'from-elks-red to-red-700', img: '/images/dining-food.jpg' },
         ].map(({ day, name, time, price, desc, color, img }) => (
           <div class="bg-white rounded-xl shadow-md border border-gray-100 overflow-hidden hover:shadow-xl transition-all">
             <div class="relative h-40 overflow-hidden">
@@ -44,19 +44,19 @@ import SectionHeading from '../components/SectionHeading.astro';
       </div>
 
       <!-- Bar -->
-      <div class="bg-gradient-to-r from-elks-dark via-purple-900 to-elks-dark rounded-2xl p-8 md:p-12 text-center mb-16 relative overflow-hidden">
+      <div class="bg-gradient-to-r from-elks-dark via-red-900 to-elks-dark rounded-2xl p-8 md:p-12 text-center mb-16 relative overflow-hidden">
         <img src="/images/lounge-bar.jpg" alt="Lodge bar" class="absolute inset-0 w-full h-full object-cover opacity-20" loading="lazy" />
         <h2 class="relative text-3xl font-heading font-bold text-white mb-4">Full-Service Bar</h2>
-        <p class="text-purple-200 max-w-2xl mx-auto mb-6">
+        <p class="text-red-200 max-w-2xl mx-auto mb-6">
           Our bar is stocked with your favorites — ice-cold draft and bottled beers, premium spirits, wines, and signature cocktails. All at lodge-friendly prices that can't be beat.
         </p>
         <div class="flex flex-wrap justify-center gap-6 text-gold-400 font-bold text-lg">
           <span>Draft Beer</span>
-          <span class="text-purple-600">•</span>
+          <span class="text-red-600">•</span>
           <span>Cocktails</span>
-          <span class="text-purple-600">•</span>
+          <span class="text-red-600">•</span>
           <span>Wine</span>
-          <span class="text-purple-600">•</span>
+          <span class="text-red-600">•</span>
           <span>Spirits</span>
         </div>
       </div>
@@ -65,7 +65,7 @@ import SectionHeading from '../components/SectionHeading.astro';
       <div class="bg-gold-50 border border-gold-200 rounded-2xl p-8 md:p-12">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           <div>
-            <h2 class="text-3xl font-heading font-bold text-elks-purple mb-4">Catering & Private Events</h2>
+            <h2 class="text-3xl font-heading font-bold text-elks-red mb-4">Catering & Private Events</h2>
             <div class="w-16 h-1 bg-gold-500 rounded-full mb-4"></div>
             <p class="text-gray-600 mb-4">
               Our kitchen team can cater your private event, wedding reception, or corporate gathering. Custom menus available with options for every budget.
@@ -78,12 +78,12 @@ import SectionHeading from '../components/SectionHeading.astro';
                 </li>
               ))}
             </ul>
-            <a href="/contact" class="inline-flex items-center gap-2 px-6 py-3 bg-elks-purple hover:bg-purple-700 text-white font-bold rounded-lg transition-colors">
+            <a href="/contact" class="inline-flex items-center gap-2 px-6 py-3 bg-elks-red hover:bg-red-700 text-white font-bold rounded-lg transition-colors">
               Inquire About Catering
             </a>
           </div>
           <div class="bg-white rounded-xl p-6 shadow-md">
-            <h3 class="font-heading font-bold text-elks-purple mb-3">Kitchen Hours</h3>
+            <h3 class="font-heading font-bold text-elks-red mb-3">Kitchen Hours</h3>
             <ul class="space-y-2 text-sm">
               <li class="flex justify-between py-2 border-b"><span class="text-gray-600">Tuesday</span><span class="font-medium">5:30 – 7:30 PM</span></li>
               <li class="flex justify-between py-2 border-b"><span class="text-gray-600">Wednesday</span><span class="font-medium">5:30 – 7:30 PM</span></li>

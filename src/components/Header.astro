@@ -54,7 +54,7 @@ const currentPath = Astro.url.pathname;
             class:list={[
               'px-3 py-2 rounded-md text-sm font-medium transition-colors',
               currentPath === item.href || (item.href !== '/' && currentPath.startsWith(item.href))
-                ? 'bg-elks-purple text-white'
+                ? 'bg-elks-red text-white'
                 : 'text-gray-300 hover:bg-gray-700 hover:text-white',
             ]}
           >
@@ -83,7 +83,7 @@ const currentPath = Astro.url.pathname;
           class:list={[
             'block px-3 py-2 rounded-md text-base font-medium transition-colors',
             currentPath === item.href || (item.href !== '/' && currentPath.startsWith(item.href))
-              ? 'bg-elks-purple text-white'
+              ? 'bg-elks-red text-white'
               : 'text-gray-300 hover:bg-gray-700 hover:text-white',
           ]}
         >

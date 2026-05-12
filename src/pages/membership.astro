@@ -22,19 +22,19 @@ import SectionHeading from '../components/SectionHeading.astro';
           { title: 'Great Food & Drinks', desc: 'Weekly dining specials at member prices plus a full-service bar with the best prices in town.', icon: 'M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z' },
         ].map(({ title, desc, icon }) => (
           <div class="bg-white rounded-xl shadow-md border border-gray-100 p-6 hover:shadow-xl transition-all group">
-            <div class="w-12 h-12 bg-gradient-to-br from-elks-purple to-purple-700 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+            <div class="w-12 h-12 bg-gradient-to-br from-elks-red to-red-700 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
               <svg class="w-6 h-6 text-gold-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={icon}></path>
               </svg>
             </div>
-            <h3 class="font-heading font-bold text-elks-purple mb-2">{title}</h3>
+            <h3 class="font-heading font-bold text-elks-red mb-2">{title}</h3>
             <p class="text-gray-600 text-sm leading-relaxed">{desc}</p>
           </div>
         ))}
       </div>
 
       <!-- How to Join -->
-      <div class="bg-purple-50 rounded-2xl p-8 md:p-12 mb-16">
+      <div class="bg-red-50 rounded-2xl p-8 md:p-12 mb-16">
         <SectionHeading title="How to Join" subtitle="Becoming an Elk is simple. Here's the process:" />
 
         <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -45,10 +45,10 @@ import SectionHeading from '../components/SectionHeading.astro';
             { step: '4', title: 'Initiation', desc: 'After approval, you\'ll be initiated at a regular lodge meeting and officially become an Elk!' },
           ].map(({ step, title, desc }) => (
             <div class="text-center">
-              <div class="w-16 h-16 bg-elks-purple rounded-full flex items-center justify-center mx-auto mb-4">
+              <div class="w-16 h-16 bg-elks-red rounded-full flex items-center justify-center mx-auto mb-4">
                 <span class="text-gold-400 font-bold text-2xl">{step}</span>
               </div>
-              <h3 class="font-heading font-bold text-elks-purple mb-2">{title}</h3>
+              <h3 class="font-heading font-bold text-elks-red mb-2">{title}</h3>
               <p class="text-gray-600 text-sm">{desc}</p>
             </div>
           ))}
@@ -57,24 +57,24 @@ import SectionHeading from '../components/SectionHeading.astro';
 
       <!-- Dues -->
       <div class="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden mb-16">
-        <div class="bg-gradient-to-r from-elks-purple to-purple-700 px-8 py-6">
+        <div class="bg-gradient-to-r from-elks-red to-red-700 px-8 py-6">
           <h2 class="text-2xl font-heading font-bold text-white">Annual Dues</h2>
         </div>
         <div class="p-8">
           <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div class="text-center p-6 bg-purple-50 rounded-xl">
+            <div class="text-center p-6 bg-red-50 rounded-xl">
               <p class="text-sm text-gray-500 mb-1">Regular Member</p>
-              <p class="text-4xl font-bold text-elks-purple mb-2">$120</p>
+              <p class="text-4xl font-bold text-elks-red mb-2">$120</p>
               <p class="text-sm text-gray-500">per year</p>
             </div>
             <div class="text-center p-6 bg-gold-50 rounded-xl border-2 border-gold-300">
               <p class="text-sm text-gray-500 mb-1">New Member (First Year)</p>
-              <p class="text-4xl font-bold text-elks-purple mb-2">$175</p>
+              <p class="text-4xl font-bold text-elks-red mb-2">$175</p>
               <p class="text-sm text-gray-500">includes initiation fee</p>
             </div>
-            <div class="text-center p-6 bg-purple-50 rounded-xl">
+            <div class="text-center p-6 bg-red-50 rounded-xl">
               <p class="text-sm text-gray-500 mb-1">Life Member</p>
-              <p class="text-4xl font-bold text-elks-purple mb-2">Contact</p>
+              <p class="text-4xl font-bold text-elks-red mb-2">Contact</p>
               <p class="text-sm text-gray-500">for pricing</p>
             </div>
           </div>
@@ -96,13 +96,13 @@ import SectionHeading from '../components/SectionHeading.astro';
 
       <!-- CTA -->
       <div class="text-center">
-        <h2 class="text-3xl font-heading font-bold text-elks-purple mb-4">Ready to Join?</h2>
+        <h2 class="text-3xl font-heading font-bold text-elks-red mb-4">Ready to Join?</h2>
         <p class="text-gray-600 mb-6 max-w-2xl mx-auto">Stop by the lodge any evening, give us a call, or fill out our contact form. We'd love to meet you!</p>
         <div class="flex flex-wrap justify-center gap-4">
-          <a href="/contact" class="px-8 py-3 bg-elks-purple hover:bg-purple-700 text-white font-bold rounded-lg transition-colors">
+          <a href="/contact" class="px-8 py-3 bg-elks-red hover:bg-red-700 text-white font-bold rounded-lg transition-colors">
             Contact Us to Join
           </a>
-          <a href="tel:+18709325498" class="px-8 py-3 border-2 border-elks-purple text-elks-purple font-bold rounded-lg hover:bg-purple-50 transition-colors">
+          <a href="tel:+18709325498" class="px-8 py-3 border-2 border-elks-red text-elks-red font-bold rounded-lg hover:bg-red-50 transition-colors">
             Call (870) 932-5498
           </a>
         </div>

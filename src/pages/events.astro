@@ -28,7 +28,7 @@ const specialEvents = allEvents.filter((e) => !e.data.recurring);
                   </div>
                 </div>
                 <div class="p-6">
-                  <h3 class="text-xl font-heading font-bold text-elks-purple mb-2">{event.data.title}</h3>
+                  <h3 class="text-xl font-heading font-bold text-elks-red mb-2">{event.data.title}</h3>
                   {event.data.time && (
                     <div class="flex items-center gap-2 text-sm text-gray-500 mb-1">
                       <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
@@ -66,7 +66,7 @@ const specialEvents = allEvents.filter((e) => !e.data.recurring);
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {recurringEvents.map((event) => (
           <div class="bg-white rounded-xl shadow-md border border-gray-100 overflow-hidden hover:shadow-lg transition-all">
-            <div class="bg-gradient-to-r from-elks-purple to-purple-700 px-6 py-4">
+            <div class="bg-gradient-to-r from-elks-red to-red-700 px-6 py-4">
               <div class="flex items-center justify-between">
                 <span class="text-gold-400 text-sm font-bold uppercase tracking-wider">{event.data.category}</span>
                 <span class="text-xs bg-gold-500/20 text-gold-300 px-2 py-0.5 rounded-full">
@@ -75,7 +75,7 @@ const specialEvents = allEvents.filter((e) => !e.data.recurring);
               </div>
             </div>
             <div class="p-6">
-              <h3 class="text-xl font-heading font-bold text-elks-purple mb-2">{event.data.title}</h3>
+              <h3 class="text-xl font-heading font-bold text-elks-red mb-2">{event.data.title}</h3>
               {event.data.time && (
                 <div class="flex items-center gap-2 text-sm text-gray-500 mb-1">
                   <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>

@@ -17,9 +17,9 @@ import SectionHeading from '../components/SectionHeading.astro';
           { stat: '500+', label: 'Active Members' },
           { stat: '1000s', label: 'Community Members Served' },
         ].map(({ stat, label }) => (
-          <div class="text-center p-6 bg-gradient-to-br from-elks-purple to-purple-700 rounded-xl shadow-lg">
+          <div class="text-center p-6 bg-gradient-to-br from-elks-red to-red-700 rounded-xl shadow-lg">
             <p class="text-3xl md:text-4xl font-bold text-gold-400 mb-1">{stat}</p>
-            <p class="text-purple-200 text-sm">{label}</p>
+            <p class="text-red-200 text-sm">{label}</p>
           </div>
         ))}
       </div>
@@ -78,7 +78,7 @@ import SectionHeading from '../components/SectionHeading.astro';
                 </svg>
               </div>
               <div>
-                <h3 class="font-heading font-bold text-elks-purple mb-2">{title}</h3>
+                <h3 class="font-heading font-bold text-elks-red mb-2">{title}</h3>
                 <p class="text-gray-600 text-sm leading-relaxed">{desc}</p>
               </div>
             </div>
@@ -88,11 +88,11 @@ import SectionHeading from '../components/SectionHeading.astro';
       </div>
 
       <!-- Elks Motto -->
-      <div class="bg-gradient-to-r from-elks-dark via-purple-900 to-elks-dark rounded-2xl p-8 md:p-16 text-center">
+      <div class="bg-gradient-to-r from-elks-dark via-red-900 to-elks-dark rounded-2xl p-8 md:p-16 text-center">
         <div class="w-20 h-20 bg-gold-500 rounded-full flex items-center justify-center mx-auto mb-6">
           <svg class="w-10 h-10 text-elks-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
         </div>
-        <blockquote class="text-xl md:text-2xl text-purple-200 italic font-heading max-w-3xl mx-auto mb-4">
+        <blockquote class="text-xl md:text-2xl text-red-200 italic font-heading max-w-3xl mx-auto mb-4">
           "The faults of our Brothers we write upon the Sand, their Virtues upon the Tablets of Love and Memory."
         </blockquote>
         <p class="text-gold-400 font-bold">— The Elks Motto</p>

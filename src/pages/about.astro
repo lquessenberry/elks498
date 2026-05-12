@@ -15,7 +15,7 @@ import PageHero from '../components/PageHero.astro';
             <span class="text-elks-dark font-bold text-xl">1899</span>
           </div>
           <div>
-            <h2 class="text-3xl font-heading font-bold text-elks-purple">Our History</h2>
+            <h2 class="text-3xl font-heading font-bold text-elks-red">Our History</h2>
             <div class="w-16 h-1 bg-gold-500 rounded-full mt-2"></div>
           </div>
         </div>
@@ -35,7 +35,7 @@ import PageHero from '../components/PageHero.astro';
 
       <!-- Timeline -->
       <div class="mb-16">
-        <h2 class="text-3xl font-heading font-bold text-elks-purple mb-8 text-center">Lodge Milestones</h2>
+        <h2 class="text-3xl font-heading font-bold text-elks-red mb-8 text-center">Lodge Milestones</h2>
         <div class="space-y-8">
           {[
             { year: '1899', event: 'Jonesboro Elks Lodge #498 receives its charter from the Grand Lodge of the BPOE.' },
@@ -47,7 +47,7 @@ import PageHero from '../components/PageHero.astro';
             { year: 'Today', event: 'Lodge #498 continues to thrive with hundreds of active members, weekly events, and deep community involvement.' },
           ].map(({ year, event }) => (
             <div class="flex gap-6 items-start">
-              <div class="shrink-0 w-20 h-20 bg-gradient-to-br from-elks-purple to-purple-700 rounded-xl flex items-center justify-center shadow-md">
+              <div class="shrink-0 w-20 h-20 bg-gradient-to-br from-elks-red to-red-700 rounded-xl flex items-center justify-center shadow-md">
                 <span class="text-gold-400 font-bold text-sm">{year}</span>
               </div>
               <div class="pt-2">
@@ -59,8 +59,8 @@ import PageHero from '../components/PageHero.astro';
       </div>
 
       <!-- About the Elks -->
-      <div class="bg-purple-50 rounded-2xl p-8 md:p-12">
-        <h2 class="text-3xl font-heading font-bold text-elks-purple mb-4">About the BPOE</h2>
+      <div class="bg-red-50 rounded-2xl p-8 md:p-12">
+        <h2 class="text-3xl font-heading font-bold text-elks-red mb-4">About the BPOE</h2>
         <div class="w-16 h-1 bg-gold-500 rounded-full mb-6"></div>
         <div class="text-gray-700 space-y-4">
           <p>
@@ -70,7 +70,7 @@ import PageHero from '../components/PageHero.astro';
             The Elks invest more than <strong>$500 million annually</strong> in charitable programs, including youth activities, scholarships, veterans services, and drug awareness programs. The Elks National Foundation is one of the largest private sources of college scholarships in the country.
           </p>
         </div>
-        <a href="https://www.elks.org" target="_blank" rel="noopener" class="inline-flex items-center gap-2 mt-6 text-elks-purple font-bold hover:text-purple-700 transition-colors">
+        <a href="https://www.elks.org" target="_blank" rel="noopener" class="inline-flex items-center gap-2 mt-6 text-elks-red font-bold hover:text-red-700 transition-colors">
           Learn more at Elks.org
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
         </a>
