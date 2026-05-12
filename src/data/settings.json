@@ -1,0 +1,17 @@
+{
+  "lodgeName": "Jonesboro Elks Lodge #498",
+  "phone": "(870) 932-5498",
+  "email": "info@jonesboroelks.com",
+  "address1": "2113 W. Washington Ave.",
+  "address2": "Jonesboro, AR 72401",
+  "facebook": "https://facebook.com/jonesboroelks498",
+  "hours": [
+    { "day": "Monday", "hours": "4 PM – 10 PM" },
+    { "day": "Tuesday", "hours": "4 PM – 10 PM" },
+    { "day": "Wednesday", "hours": "4 PM – 10 PM" },
+    { "day": "Thursday", "hours": "4 PM – 10 PM" },
+    { "day": "Friday", "hours": "4 PM – 12 AM" },
+    { "day": "Saturday", "hours": "12 PM – 12 AM" },
+    { "day": "Sunday", "hours": "Closed" }
+  ]
+}

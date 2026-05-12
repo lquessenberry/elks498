@@ -1,0 +1,110 @@
+---
+const navItems = [
+  { label: 'Home', href: '/' },
+  { label: 'About', href: '/about' },
+  { label: 'Our Lodge', href: '/lodge' },
+  { label: 'Facilities', href: '/facilities' },
+  { label: 'Events', href: '/events' },
+  { label: 'Dining', href: '/dining' },
+  { label: 'Membership', href: '/membership' },
+  { label: 'Charity', href: '/charity' },
+  { label: 'Gallery', href: '/gallery' },
+  { label: 'Contact', href: '/contact' },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="bg-elks-dark text-white sticky top-0 z-50 shadow-lg">
+  <!-- Top bar -->
+  <div class="bg-purple-900 text-purple-200 text-sm py-1.5">
+    <div class="max-w-7xl mx-auto px-4 flex justify-between items-center">
+      <span>Benevolent and Protective Order of Elks — Lodge #498</span>
+      <div class="hidden sm:flex items-center gap-4">
+        <a href="tel:+18709325498" class="hover:text-gold-400 transition-colors">
+          (870) 932-5498
+        </a>
+        <button class="snipcart-checkout hover:text-gold-400 transition-colors cursor-pointer flex items-center gap-1">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m1.6 8l-1.3 5.2A1 1 0 006.7 21H17M9 21a1 1 0 100-2 1 1 0 000 2zm8 0a1 1 0 100-2 1 1 0 000 2z"></path>
+          </svg>
+          Cart (<span class="snipcart-items-count">0</span>)
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main nav -->
+  <nav class="max-w-7xl mx-auto px-4 py-3">
+    <div class="flex items-center justify-between">
+      <!-- Logo -->
+      <a href="/" class="flex items-center gap-3 shrink-0">
+        <img src="/images/elks-logo.png" alt="Elks Logo" class="w-12 h-12 object-contain" loading="eager" />
+        <div class="hidden sm:block">
+          <div class="font-heading text-lg font-bold text-white leading-tight">Jonesboro Elks</div>
+          <div class="text-gold-400 text-xs tracking-wider uppercase">Lodge #498 · BPOE</div>
+        </div>
+      </a>
+
+      <!-- Desktop Nav -->
+      <div class="hidden lg:flex items-center gap-1">
+        {navItems.map((item) => (
+          <a
+            href={item.href}
+            class:list={[
+              'px-3 py-2 rounded-md text-sm font-medium transition-colors',
+              currentPath === item.href || (item.href !== '/' && currentPath.startsWith(item.href))
+                ? 'bg-purple-700 text-white'
+                : 'text-purple-100 hover:bg-purple-800 hover:text-white',
+            ]}
+          >
+            {item.label}
+          </a>
+        ))}
+      </div>
+
+      <!-- Mobile menu button -->
+      <button
+        id="mobile-menu-btn"
+        class="lg:hidden text-white p-2 rounded-md hover:bg-purple-800 transition-colors"
+        aria-label="Toggle menu"
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Nav -->
+    <div id="mobile-menu" class="hidden lg:hidden mt-3 pb-3 border-t border-purple-700 pt-3">
+      {navItems.map((item) => (
+        <a
+          href={item.href}
+          class:list={[
+            'block px-3 py-2 rounded-md text-base font-medium transition-colors',
+            currentPath === item.href || (item.href !== '/' && currentPath.startsWith(item.href))
+              ? 'bg-purple-700 text-white'
+              : 'text-purple-100 hover:bg-purple-800 hover:text-white',
+          ]}
+        >
+          {item.label}
+        </a>
+      ))}
+      <div class="mt-3 pt-3 border-t border-purple-700 flex items-center gap-4 px-3">
+        <a href="tel:+18709325498" class="text-purple-200 hover:text-gold-400 text-sm">
+          (870) 932-5498
+        </a>
+        <button class="snipcart-checkout text-purple-200 hover:text-gold-400 text-sm cursor-pointer">
+          Cart (<span class="snipcart-items-count">0</span>)
+        </button>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<script is:inline>
+  document.getElementById('mobile-menu-btn')?.addEventListener('click', () => {
+    const menu = document.getElementById('mobile-menu');
+    menu?.classList.toggle('hidden');
+  });
+</script>

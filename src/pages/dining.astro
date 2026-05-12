@@ -1,0 +1,99 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+---
+
+<BaseLayout title="Dining & Specials" description="Enjoy Taco Tuesdays, Burger Nights, and more at Jonesboro Elks Lodge #498. Great food, cold drinks, and warm company.">
+  <PageHero title="Dining & Specials" subtitle="Great food, cold drinks, and warm company — every week at Lodge #498." backgroundImage="/images/dining-food.jpg" />
+
+  <section class="py-16">
+    <div class="max-w-7xl mx-auto px-4">
+      <!-- Weekly Specials -->
+      <SectionHeading title="Weekly Dining Schedule" subtitle="Join us for these delicious weekly specials. Open to members and their guests." />
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+        {[
+          { day: 'Tuesday', name: 'Taco Tuesday', time: '5:30 – 7:30 PM', price: '$8', desc: 'All-you-can-eat tacos with all the fixings — beef, chicken, pork, and veggie options. Plus chips, salsa, and queso.', color: 'from-orange-500 to-red-500', img: '/images/tacos.jpg' },
+          { day: 'Wednesday', name: 'Wing Wednesday', time: '5:30 – 7:30 PM', price: '$9', desc: 'Crispy wings with your choice of sauce — buffalo, BBQ, garlic parmesan, lemon pepper, and our secret Elks sauce.', color: 'from-amber-500 to-orange-500', img: '/images/wings.jpg' },
+          { day: 'Thursday', name: 'Steak Night', time: '6:00 – 8:00 PM', price: '$15', desc: 'Hand-cut ribeye or sirloin grilled to perfection, served with baked potato, salad, and Texas toast.', color: 'from-red-700 to-red-900', img: '/images/steak.jpg' },
+          { day: 'Friday', name: 'Burger Night', time: '5:30 – 7:30 PM', price: '$10', desc: 'Thick, juicy hand-pattied burgers with all the toppings. Choose from classic, bacon, mushroom Swiss, or our Elk Burger special.', color: 'from-yellow-600 to-amber-700', img: '/images/burgers.jpg' },
+          { day: 'Saturday', name: 'Chef\'s Special', time: '6:00 – 8:00 PM', price: 'Varies', desc: 'Our kitchen crew gets creative! Past specials include fried catfish, shrimp boil, BBQ plates, and more. Check our events page!', color: 'from-elks-purple to-purple-700', img: '/images/dining-food.jpg' },
+        ].map(({ day, name, time, price, desc, color, img }) => (
+          <div class="bg-white rounded-xl shadow-md border border-gray-100 overflow-hidden hover:shadow-xl transition-all">
+            <div class="relative h-40 overflow-hidden">
+              <img src={img} alt={name} class="w-full h-full object-cover" loading="lazy" />
+              <div class={`absolute inset-0 bg-gradient-to-t ${color} opacity-60`}></div>
+            </div>
+            <div class={`bg-gradient-to-r ${color} px-6 py-4`}>
+              <div class="flex items-center justify-between">
+                <span class="text-white/80 text-sm font-bold uppercase tracking-wider">{day}</span>
+                <span class="text-white font-bold text-lg">{price}</span>
+              </div>
+              <h3 class="text-xl font-heading font-bold text-white mt-1">{name}</h3>
+            </div>
+            <div class="p-6">
+              <div class="flex items-center gap-2 text-sm text-gray-500 mb-3">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                {time}
+              </div>
+              <p class="text-gray-600 text-sm leading-relaxed">{desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Bar -->
+      <div class="bg-gradient-to-r from-elks-dark via-purple-900 to-elks-dark rounded-2xl p-8 md:p-12 text-center mb-16 relative overflow-hidden">
+        <img src="/images/lounge-bar.jpg" alt="Lodge bar" class="absolute inset-0 w-full h-full object-cover opacity-20" loading="lazy" />
+        <h2 class="relative text-3xl font-heading font-bold text-white mb-4">Full-Service Bar</h2>
+        <p class="text-purple-200 max-w-2xl mx-auto mb-6">
+          Our bar is stocked with your favorites — ice-cold draft and bottled beers, premium spirits, wines, and signature cocktails. All at lodge-friendly prices that can't be beat.
+        </p>
+        <div class="flex flex-wrap justify-center gap-6 text-gold-400 font-bold text-lg">
+          <span>Draft Beer</span>
+          <span class="text-purple-600">•</span>
+          <span>Cocktails</span>
+          <span class="text-purple-600">•</span>
+          <span>Wine</span>
+          <span class="text-purple-600">•</span>
+          <span>Spirits</span>
+        </div>
+      </div>
+
+      <!-- Private Events -->
+      <div class="bg-gold-50 border border-gold-200 rounded-2xl p-8 md:p-12">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+          <div>
+            <h2 class="text-3xl font-heading font-bold text-elks-purple mb-4">Catering & Private Events</h2>
+            <div class="w-16 h-1 bg-gold-500 rounded-full mb-4"></div>
+            <p class="text-gray-600 mb-4">
+              Our kitchen team can cater your private event, wedding reception, or corporate gathering. Custom menus available with options for every budget.
+            </p>
+            <ul class="space-y-2 mb-6">
+              {['Custom menu planning', 'Full bar service', 'Buffet or plated service', 'Dietary accommodations'].map((item) => (
+                <li class="flex items-center gap-2 text-gray-700">
+                  <svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                  {item}
+                </li>
+              ))}
+            </ul>
+            <a href="/contact" class="inline-flex items-center gap-2 px-6 py-3 bg-elks-purple hover:bg-purple-700 text-white font-bold rounded-lg transition-colors">
+              Inquire About Catering
+            </a>
+          </div>
+          <div class="bg-white rounded-xl p-6 shadow-md">
+            <h3 class="font-heading font-bold text-elks-purple mb-3">Kitchen Hours</h3>
+            <ul class="space-y-2 text-sm">
+              <li class="flex justify-between py-2 border-b"><span class="text-gray-600">Tuesday</span><span class="font-medium">5:30 – 7:30 PM</span></li>
+              <li class="flex justify-between py-2 border-b"><span class="text-gray-600">Wednesday</span><span class="font-medium">5:30 – 7:30 PM</span></li>
+              <li class="flex justify-between py-2 border-b"><span class="text-gray-600">Thursday</span><span class="font-medium">6:00 – 8:00 PM</span></li>
+              <li class="flex justify-between py-2 border-b"><span class="text-gray-600">Friday</span><span class="font-medium">5:30 – 7:30 PM</span></li>
+              <li class="flex justify-between py-2"><span class="text-gray-600">Saturday</span><span class="font-medium">6:00 – 8:00 PM</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

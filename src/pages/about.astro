@@ -1,0 +1,80 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+---
+
+<BaseLayout title="About & History" description="Learn about the history of Jonesboro Elks Lodge #498, founded in 1899 and serving the community for over 125 years.">
+  <PageHero title="About Our Lodge" subtitle="A proud tradition of service, charity, and brotherhood since 1899." backgroundImage="/images/lodge-building.jpg" />
+
+  <section class="py-16">
+    <div class="max-w-4xl mx-auto px-4">
+      <!-- History -->
+      <div class="mb-16">
+        <div class="flex items-center gap-4 mb-6">
+          <div class="w-16 h-16 bg-gold-500 rounded-full flex items-center justify-center shrink-0">
+            <span class="text-elks-dark font-bold text-xl">1899</span>
+          </div>
+          <div>
+            <h2 class="text-3xl font-heading font-bold text-elks-purple">Our History</h2>
+            <div class="w-16 h-1 bg-gold-500 rounded-full mt-2"></div>
+          </div>
+        </div>
+
+        <div class="prose prose-lg max-w-none text-gray-700 space-y-4">
+          <p>
+            Jonesboro Elks Lodge #498 was chartered in <strong>1899</strong>, making it one of the oldest fraternal organizations in northeast Arkansas. For over 125 years, our lodge has been a cornerstone of the Jonesboro community, bringing together men and women who believe in the core Elks values of <strong>Charity, Justice, Brotherly Love, and Fidelity</strong>.
+          </p>
+          <p>
+            From our earliest days, the Elks of Jonesboro have been dedicated to making our community a better place. Whether it's providing scholarships to local students, supporting our veterans, or simply offering a welcoming place for families to gather, Lodge #498 has always put service above self.
+          </p>
+          <p>
+            Today, our lodge is located at <strong>2113 W. Washington Avenue</strong> in Jonesboro, Arkansas. Our facilities include a spacious banquet hall, a comfortable members' lounge, a full-service bar, a commercial kitchen, and the beloved Crystal Blue Pool — a summertime destination for families throughout the region.
+          </p>
+        </div>
+      </div>
+
+      <!-- Timeline -->
+      <div class="mb-16">
+        <h2 class="text-3xl font-heading font-bold text-elks-purple mb-8 text-center">Lodge Milestones</h2>
+        <div class="space-y-8">
+          {[
+            { year: '1899', event: 'Jonesboro Elks Lodge #498 receives its charter from the Grand Lodge of the BPOE.' },
+            { year: '1920s', event: 'Lodge grows significantly during the post-war era, establishing its role as a community gathering place.' },
+            { year: '1950s', event: 'Construction of the current lodge building on Washington Avenue begins.' },
+            { year: '1960s', event: 'Crystal Blue Pool opens, becoming a beloved summer destination for Jonesboro families.' },
+            { year: '1980s', event: 'Lodge establishes its scholarship program, providing thousands of dollars annually to local students.' },
+            { year: '2000s', event: 'Major renovation of the banquet hall and kitchen facilities.' },
+            { year: 'Today', event: 'Lodge #498 continues to thrive with hundreds of active members, weekly events, and deep community involvement.' },
+          ].map(({ year, event }) => (
+            <div class="flex gap-6 items-start">
+              <div class="shrink-0 w-20 h-20 bg-gradient-to-br from-elks-purple to-purple-700 rounded-xl flex items-center justify-center shadow-md">
+                <span class="text-gold-400 font-bold text-sm">{year}</span>
+              </div>
+              <div class="pt-2">
+                <p class="text-gray-700 leading-relaxed">{event}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- About the Elks -->
+      <div class="bg-purple-50 rounded-2xl p-8 md:p-12">
+        <h2 class="text-3xl font-heading font-bold text-elks-purple mb-4">About the BPOE</h2>
+        <div class="w-16 h-1 bg-gold-500 rounded-full mb-6"></div>
+        <div class="text-gray-700 space-y-4">
+          <p>
+            The <strong>Benevolent and Protective Order of Elks</strong> (BPOE) is the largest fraternal organization in the United States, with nearly one million members and over 1,900 lodges nationwide. Founded in 1868 in New York City, the Elks are dedicated to promoting the welfare and enhancing the happiness of its members, fostering American patriotism, and supporting charitable works.
+          </p>
+          <p>
+            The Elks invest more than <strong>$500 million annually</strong> in charitable programs, including youth activities, scholarships, veterans services, and drug awareness programs. The Elks National Foundation is one of the largest private sources of college scholarships in the country.
+          </p>
+        </div>
+        <a href="https://www.elks.org" target="_blank" rel="noopener" class="inline-flex items-center gap-2 mt-6 text-elks-purple font-bold hover:text-purple-700 transition-colors">
+          Learn more at Elks.org
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

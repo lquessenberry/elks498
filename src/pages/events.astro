@@ -1,0 +1,104 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import { getCollection } from 'astro:content';
+
+const allEvents = await getCollection('events');
+const recurringEvents = allEvents.filter((e) => e.data.recurring);
+const specialEvents = allEvents.filter((e) => !e.data.recurring);
+---
+
+<BaseLayout title="Events & Calendar" description="View upcoming events at Jonesboro Elks Lodge #498 — Taco Tuesdays, Burger Nights, charity tournaments, and more.">
+  <PageHero title="Events & Calendar" subtitle="There's always something happening at Lodge #498. Check out our upcoming events!" backgroundImage="/images/family-event.jpg" />
+
+  <section class="py-16">
+    <div class="max-w-7xl mx-auto px-4">
+      <!-- Special Events -->
+      {specialEvents.length > 0 && (
+        <div class="mb-16">
+          <SectionHeading title="Special Events" subtitle="Mark your calendar for these can't-miss events." />
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {specialEvents.map((event) => (
+              <div class="bg-white rounded-xl shadow-md border border-gray-100 overflow-hidden hover:shadow-xl transition-all">
+                <div class="bg-gradient-to-r from-gold-500 to-gold-400 px-6 py-4">
+                  <div class="flex items-center justify-between">
+                    <span class="text-elks-dark text-sm font-bold uppercase tracking-wider">{event.data.category}</span>
+                    <span class="text-elks-dark/70 text-sm">{event.data.date}</span>
+                  </div>
+                </div>
+                <div class="p-6">
+                  <h3 class="text-xl font-heading font-bold text-elks-purple mb-2">{event.data.title}</h3>
+                  {event.data.time && (
+                    <div class="flex items-center gap-2 text-sm text-gray-500 mb-1">
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                      {event.data.time}
+                    </div>
+                  )}
+                  {event.data.location && (
+                    <div class="flex items-center gap-2 text-sm text-gray-500 mb-3">
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                      {event.data.location}
+                    </div>
+                  )}
+                  <p class="text-gray-600 text-sm mb-4">{event.data.description}</p>
+                  {event.data.ticketPrice && event.data.ticketId && (
+                    <button
+                      class="snipcart-add-item w-full px-4 py-2.5 bg-gold-500 hover:bg-gold-400 text-elks-dark font-bold rounded-lg transition-colors cursor-pointer text-sm"
+                      data-item-id={event.data.ticketId}
+                      data-item-name={`${event.data.title} Ticket`}
+                      data-item-price={event.data.ticketPrice}
+                      data-item-url="/events"
+                      data-item-description={event.data.description}
+                    >
+                      Buy Ticket — ${event.data.ticketPrice}
+                    </button>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      <!-- Recurring Events -->
+      <SectionHeading title="Weekly & Recurring Events" subtitle="Join us for these regular lodge activities." />
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {recurringEvents.map((event) => (
+          <div class="bg-white rounded-xl shadow-md border border-gray-100 overflow-hidden hover:shadow-lg transition-all">
+            <div class="bg-gradient-to-r from-elks-purple to-purple-700 px-6 py-4">
+              <div class="flex items-center justify-between">
+                <span class="text-gold-400 text-sm font-bold uppercase tracking-wider">{event.data.category}</span>
+                <span class="text-xs bg-gold-500/20 text-gold-300 px-2 py-0.5 rounded-full">
+                  {event.data.recurringSchedule}
+                </span>
+              </div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-heading font-bold text-elks-purple mb-2">{event.data.title}</h3>
+              {event.data.time && (
+                <div class="flex items-center gap-2 text-sm text-gray-500 mb-1">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                  {event.data.time}
+                </div>
+              )}
+              {event.data.location && (
+                <div class="flex items-center gap-2 text-sm text-gray-500 mb-3">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                  {event.data.location}
+                </div>
+              )}
+              <p class="text-gray-600 text-sm">{event.data.description}</p>
+              {event.data.ticketPrice && (
+                <div class="mt-4 pt-4 border-t">
+                  <span class="text-gold-600 font-bold text-lg">${event.data.ticketPrice}</span>
+                  <span class="text-gray-500 text-sm"> per person</span>
+                </div>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

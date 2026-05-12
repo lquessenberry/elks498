@@ -1,0 +1,186 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import Card from '../components/Card.astro';
+import SocialFeeds from '../components/SocialFeeds.astro';
+import { getCollection } from 'astro:content';
+
+const events = (await getCollection('events')).slice(0, 3);
+const news = (await getCollection('news')).filter((n) => n.data.featured).slice(0, 2);
+---
+
+<BaseLayout title="Home" description="Jonesboro Elks Lodge #498 — Serving the Jonesboro, AR community since 1899. Events, dining, pool, hall rentals & fraternal fellowship.">
+  <!-- Hero -->
+  <Hero
+    title="Welcome to Jonesboro Elks Lodge #498"
+    subtitle="Serving our community with pride since 1899. Join us for great food, exciting events, and lasting friendships."
+    showCtas={true}
+  />
+
+  <!-- Features Section -->
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4">
+      <SectionHeading title="What We Offer" subtitle="From delicious dining to family fun, Lodge #498 is the heart of the Jonesboro community." />
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="text-center p-6 rounded-xl bg-purple-50 hover:bg-purple-100 transition-colors group">
+          <div class="w-14 h-14 bg-elks-purple rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+            <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
+          </div>
+          <h3 class="font-heading font-bold text-elks-purple mb-2">Banquet Hall</h3>
+          <p class="text-sm text-gray-600">Host your next event in our beautiful 250-capacity banquet hall.</p>
+        </div>
+
+        <div class="text-center p-6 rounded-xl bg-purple-50 hover:bg-purple-100 transition-colors group">
+          <div class="w-14 h-14 bg-elks-purple rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+            <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+          </div>
+          <h3 class="font-heading font-bold text-elks-purple mb-2">Dining & Drinks</h3>
+          <p class="text-sm text-gray-600">Taco Tuesdays, Burger Nights, and a full-service bar for members.</p>
+        </div>
+
+        <div class="text-center p-6 rounded-xl bg-purple-50 hover:bg-purple-100 transition-colors group">
+          <div class="w-14 h-14 bg-elks-purple rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+            <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+          </div>
+          <h3 class="font-heading font-bold text-elks-purple mb-2">Crystal Blue Pool</h3>
+          <p class="text-sm text-gray-600">Cool off all summer at our beautiful pool with family & friends.</p>
+        </div>
+
+        <div class="text-center p-6 rounded-xl bg-purple-50 hover:bg-purple-100 transition-colors group">
+          <div class="w-14 h-14 bg-elks-purple rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+            <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+          </div>
+          <h3 class="font-heading font-bold text-elks-purple mb-2">Charity & Service</h3>
+          <p class="text-sm text-gray-600">$10K+ in scholarships and support for veterans & youth programs.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Upcoming Events -->
+  <section class="py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4">
+      <SectionHeading title="Upcoming Events" subtitle="There's always something happening at Lodge #498!" />
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {events.map((event) => (
+          <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 hover:shadow-lg transition-shadow">
+            <div class="bg-gradient-to-r from-elks-purple to-purple-700 px-5 py-3">
+              <div class="flex items-center justify-between">
+                <span class="text-gold-400 text-sm font-bold uppercase tracking-wider">{event.data.category}</span>
+                {event.data.recurring && (
+                  <span class="text-xs bg-gold-500/20 text-gold-300 px-2 py-0.5 rounded-full">Recurring</span>
+                )}
+              </div>
+            </div>
+            <div class="p-5">
+              <h3 class="font-heading font-bold text-xl text-elks-purple mb-2">{event.data.title}</h3>
+              <div class="flex items-center gap-2 text-sm text-gray-500 mb-1">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                {event.data.time || 'TBA'}
+              </div>
+              {event.data.recurringSchedule && (
+                <div class="flex items-center gap-2 text-sm text-gray-500 mb-3">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
+                  {event.data.recurringSchedule}
+                </div>
+              )}
+              <p class="text-gray-600 text-sm">{event.data.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div class="text-center mt-8">
+        <a href="/events" class="inline-flex items-center gap-2 px-6 py-3 bg-elks-purple hover:bg-purple-700 text-white font-bold rounded-lg transition-colors">
+          View All Events
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- News / Announcements -->
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4">
+      <SectionHeading title="Lodge News" subtitle="Stay up to date with what's happening at the lodge." />
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {news.map((item) => (
+          <div class="flex gap-5 items-start bg-purple-50 rounded-xl p-6 hover:bg-purple-100 transition-colors">
+            <div class="shrink-0 w-16 h-16 bg-elks-purple rounded-lg flex items-center justify-center">
+              <svg class="w-8 h-8 text-gold-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"></path></svg>
+            </div>
+            <div>
+              <p class="text-xs text-gray-500 mb-1">{item.data.date}</p>
+              <h3 class="font-heading font-bold text-lg text-elks-purple mb-2">{item.data.title}</h3>
+              <p class="text-gray-600 text-sm">{item.data.excerpt}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
+  <section class="bg-gradient-to-r from-elks-dark via-purple-900 to-elks-dark py-16">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <h2 class="text-3xl md:text-4xl font-heading font-bold text-white mb-4">Become an Elk Today</h2>
+      <p class="text-purple-200 mb-8 text-lg">Join the largest fraternal organization in the United States. Make friends, give back, and be part of something bigger.</p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="/membership" class="px-8 py-3 bg-gold-500 hover:bg-gold-400 text-elks-dark font-bold rounded-lg shadow-lg transition-all">
+          Learn About Membership
+        </a>
+        <a href="/contact" class="px-8 py-3 bg-white/10 hover:bg-white/20 text-white font-bold rounded-lg border border-white/30 transition-all">
+          Contact Us
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Social Media Feeds -->
+  <SocialFeeds />
+
+  <!-- Map Preview -->
+  <section class="py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+        <div>
+          <h2 class="text-3xl font-heading font-bold text-elks-purple mb-4">Visit Us</h2>
+          <div class="w-16 h-1 bg-gold-500 rounded-full mb-6"></div>
+          <p class="text-gray-600 mb-4 leading-relaxed">
+            Located on Washington Avenue in Jonesboro, Arkansas, our lodge has been a cornerstone of the community for over 125 years.
+          </p>
+          <div class="space-y-3 text-gray-700">
+            <div class="flex items-center gap-3">
+              <svg class="w-5 h-5 text-elks-purple" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+              <span class="font-medium">2113 W. Washington Ave., Jonesboro, AR 72401</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <svg class="w-5 h-5 text-elks-purple" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+              <a href="tel:+18709325498" class="font-medium hover:text-elks-purple transition-colors">(870) 932-5498</a>
+            </div>
+          </div>
+          <a href="/contact" class="inline-flex items-center gap-2 mt-6 text-elks-purple font-bold hover:text-purple-700 transition-colors">
+            Get Directions & Contact Info
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+          </a>
+        </div>
+        <div class="rounded-xl overflow-hidden shadow-lg border border-gray-200">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3239.5!2d-90.7!3d35.84!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2s2113+W+Washington+Ave+Jonesboro+AR+72401!5e0!3m2!1sen!2sus!4v1"
+            width="100%"
+            height="350"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Jonesboro Elks Lodge #498 Map"
+          ></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

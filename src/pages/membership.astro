@@ -1,0 +1,112 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+---
+
+<BaseLayout title="Membership – Join the Elks" description="Become a member of Jonesboro Elks Lodge #498. Learn about the benefits of Elkdom and how to apply.">
+  <PageHero title="Become an Elk" subtitle="Join the largest fraternal organization in the United States and make a difference in your community." backgroundImage="/images/american-flag.jpg" />
+
+  <section class="py-16">
+    <div class="max-w-7xl mx-auto px-4">
+      <!-- Benefits -->
+      <SectionHeading title="Why Join the Elks?" subtitle="Membership offers fellowship, service opportunities, and exclusive benefits." />
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+        {[
+          { title: 'Brotherhood & Fellowship', desc: 'Connect with like-minded people who care about their community. Make lifelong friendships.', icon: 'M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z' },
+          { title: 'Community Service', desc: 'Make a real impact through scholarships, veterans programs, youth activities, and local charities.', icon: 'M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z' },
+          { title: 'Lodge Facilities', desc: 'Full access to our lounge, bar, dining events, and members-only pricing on facility rentals.', icon: 'M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6' },
+          { title: 'Crystal Blue Pool', desc: 'Discounted season passes and daily admission to our beautiful outdoor swimming pool.', icon: 'M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z' },
+          { title: 'Nationwide Benefits', desc: 'Visit any of the 1,900+ Elks lodges across the country. Enjoy reciprocal privileges wherever you travel.', icon: 'M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z' },
+          { title: 'Great Food & Drinks', desc: 'Weekly dining specials at member prices plus a full-service bar with the best prices in town.', icon: 'M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z' },
+        ].map(({ title, desc, icon }) => (
+          <div class="bg-white rounded-xl shadow-md border border-gray-100 p-6 hover:shadow-xl transition-all group">
+            <div class="w-12 h-12 bg-gradient-to-br from-elks-purple to-purple-700 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+              <svg class="w-6 h-6 text-gold-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={icon}></path>
+              </svg>
+            </div>
+            <h3 class="font-heading font-bold text-elks-purple mb-2">{title}</h3>
+            <p class="text-gray-600 text-sm leading-relaxed">{desc}</p>
+          </div>
+        ))}
+      </div>
+
+      <!-- How to Join -->
+      <div class="bg-purple-50 rounded-2xl p-8 md:p-12 mb-16">
+        <SectionHeading title="How to Join" subtitle="Becoming an Elk is simple. Here's the process:" />
+
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+          {[
+            { step: '1', title: 'Meet the Requirements', desc: 'You must be a U.S. citizen, at least 21 years old, and believe in God.' },
+            { step: '2', title: 'Get Sponsored', desc: 'A current Elk member in good standing must propose you for membership.' },
+            { step: '3', title: 'Submit Application', desc: 'Complete an application form and submit it to the lodge Secretary.' },
+            { step: '4', title: 'Initiation', desc: 'After approval, you\'ll be initiated at a regular lodge meeting and officially become an Elk!' },
+          ].map(({ step, title, desc }) => (
+            <div class="text-center">
+              <div class="w-16 h-16 bg-elks-purple rounded-full flex items-center justify-center mx-auto mb-4">
+                <span class="text-gold-400 font-bold text-2xl">{step}</span>
+              </div>
+              <h3 class="font-heading font-bold text-elks-purple mb-2">{title}</h3>
+              <p class="text-gray-600 text-sm">{desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Dues -->
+      <div class="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden mb-16">
+        <div class="bg-gradient-to-r from-elks-purple to-purple-700 px-8 py-6">
+          <h2 class="text-2xl font-heading font-bold text-white">Annual Dues</h2>
+        </div>
+        <div class="p-8">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="text-center p-6 bg-purple-50 rounded-xl">
+              <p class="text-sm text-gray-500 mb-1">Regular Member</p>
+              <p class="text-4xl font-bold text-elks-purple mb-2">$120</p>
+              <p class="text-sm text-gray-500">per year</p>
+            </div>
+            <div class="text-center p-6 bg-gold-50 rounded-xl border-2 border-gold-300">
+              <p class="text-sm text-gray-500 mb-1">New Member (First Year)</p>
+              <p class="text-4xl font-bold text-elks-purple mb-2">$175</p>
+              <p class="text-sm text-gray-500">includes initiation fee</p>
+            </div>
+            <div class="text-center p-6 bg-purple-50 rounded-xl">
+              <p class="text-sm text-gray-500 mb-1">Life Member</p>
+              <p class="text-4xl font-bold text-elks-purple mb-2">Contact</p>
+              <p class="text-sm text-gray-500">for pricing</p>
+            </div>
+          </div>
+
+          <div class="mt-8 text-center">
+            <button
+              class="snipcart-add-item inline-flex items-center gap-2 px-8 py-3 bg-gold-500 hover:bg-gold-400 text-elks-dark font-bold rounded-lg shadow-lg transition-all cursor-pointer"
+              data-item-id="annual-dues"
+              data-item-name="Annual Membership Dues"
+              data-item-price="120.00"
+              data-item-url="/membership"
+              data-item-description="Annual dues for Jonesboro Elks Lodge #498"
+            >
+              Pay Annual Dues Online — $120
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="text-center">
+        <h2 class="text-3xl font-heading font-bold text-elks-purple mb-4">Ready to Join?</h2>
+        <p class="text-gray-600 mb-6 max-w-2xl mx-auto">Stop by the lodge any evening, give us a call, or fill out our contact form. We'd love to meet you!</p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href="/contact" class="px-8 py-3 bg-elks-purple hover:bg-purple-700 text-white font-bold rounded-lg transition-colors">
+            Contact Us to Join
+          </a>
+          <a href="tel:+18709325498" class="px-8 py-3 border-2 border-elks-purple text-elks-purple font-bold rounded-lg hover:bg-purple-50 transition-colors">
+            Call (870) 932-5498
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

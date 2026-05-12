@@ -1,0 +1,148 @@
+backend:
+  name: git-gateway
+  branch: main
+
+publish_mode: editorial_workflow
+
+media_folder: "public/images/uploads"
+public_folder: "/images/uploads"
+
+site_url: https://jonesboroelks.com
+display_url: https://jonesboroelks.com
+logo_url: https://jonesboroelks.com/images/elks-emblem-placeholder.svg
+
+collections:
+  # ─── Officers ──────────────────────────────────────────
+  - name: "officers"
+    label: "Officers & Leadership"
+    folder: "src/content/officers"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Name", name: "name", widget: "string" }
+      - { label: "Title / Position", name: "title", widget: "string" }
+      - { label: "Display Order", name: "order", widget: "number", value_type: "int", min: 1 }
+      - { label: "Photo", name: "image", widget: "image", required: false }
+      - { label: "Email", name: "email", widget: "string", required: false }
+      - { label: "Short Bio", name: "bio", widget: "text", required: false }
+      - { label: "Body", name: "body", widget: "markdown", required: false }
+
+  # ─── Events ────────────────────────────────────────────
+  - name: "events"
+    label: "Events"
+    folder: "src/content/events"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Event Title", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false }
+      - { label: "End Date", name: "endDate", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false, required: false }
+      - { label: "Time", name: "time", widget: "string", required: false }
+      - { label: "Location", name: "location", widget: "string", required: false }
+      - { label: "Short Description", name: "description", widget: "text" }
+      - { label: "Image", name: "image", widget: "image", required: false }
+      - { label: "Recurring?", name: "recurring", widget: "boolean", default: false }
+      - { label: "Recurring Schedule", name: "recurringSchedule", widget: "string", required: false, hint: "e.g. Every Tuesday, 1st Saturday" }
+      - label: "Category"
+        name: "category"
+        widget: "select"
+        options: ["dining", "social", "charity", "meeting", "rental", "pool", "other"]
+        default: "other"
+      - { label: "Ticket Price ($)", name: "ticketPrice", widget: "number", value_type: "float", required: false }
+      - { label: "Ticket/Product ID", name: "ticketId", widget: "string", required: false, hint: "For Snipcart integration" }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  # ─── News ──────────────────────────────────────────────
+  - name: "news"
+    label: "News & Announcements"
+    folder: "src/content/news"
+    create: true
+    slug: "{{year}}-{{month}}-{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false }
+      - { label: "Author", name: "author", widget: "string", required: false }
+      - { label: "Featured Image", name: "image", widget: "image", required: false }
+      - { label: "Excerpt", name: "excerpt", widget: "text" }
+      - { label: "Featured?", name: "featured", widget: "boolean", default: false }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  # ─── Gallery ───────────────────────────────────────────
+  - name: "gallery"
+    label: "Photo Gallery"
+    folder: "src/content/gallery"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Album Title", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false, required: false }
+      - { label: "Category", name: "category", widget: "string", required: false }
+      - label: "Photos"
+        name: "images"
+        widget: "list"
+        fields:
+          - { label: "Image", name: "src", widget: "image" }
+          - { label: "Alt Text", name: "alt", widget: "string" }
+          - { label: "Caption", name: "caption", widget: "string", required: false }
+      - { label: "Description", name: "body", widget: "markdown", required: false }
+
+  # ─── Rental Packages ───────────────────────────────────
+  - name: "rentals"
+    label: "Rental Packages"
+    folder: "src/content/rentals"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Facility Name", name: "title", widget: "string" }
+      - { label: "Rental Price ($)", name: "price", widget: "number", value_type: "float" }
+      - { label: "Deposit Amount ($)", name: "depositAmount", widget: "number", value_type: "float" }
+      - { label: "Capacity (guests)", name: "capacity", widget: "number", value_type: "int" }
+      - { label: "Photo", name: "image", widget: "image", required: false }
+      - label: "Amenities"
+        name: "amenities"
+        widget: "list"
+        field: { label: "Amenity", name: "amenity", widget: "string" }
+        required: false
+      - { label: "Display Order", name: "order", widget: "number", value_type: "int", default: 0 }
+      - { label: "Description", name: "body", widget: "markdown" }
+
+  # ─── Products / Shop ───────────────────────────────────
+  - name: "products"
+    label: "Shop / Products"
+    folder: "src/content/products"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Product Name", name: "title", widget: "string" }
+      - { label: "Price ($)", name: "price", widget: "number", value_type: "float" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Image", name: "image", widget: "image", required: false }
+      - label: "Category"
+        name: "category"
+        widget: "select"
+        options: ["pool-pass", "merchandise", "dues", "ticket", "other"]
+        default: "other"
+      - { label: "Snipcart Product ID", name: "snipcartId", widget: "string" }
+      - { label: "Available?", name: "available", widget: "boolean", default: true }
+      - { label: "Body", name: "body", widget: "markdown", required: false }
+
+  # ─── Site Settings (file-based) ────────────────────────
+  - name: "settings"
+    label: "Site Settings"
+    files:
+      - label: "General Settings"
+        name: "general"
+        file: "src/data/settings.json"
+        fields:
+          - { label: "Lodge Name", name: "lodgeName", widget: "string", default: "Jonesboro Elks Lodge #498" }
+          - { label: "Phone", name: "phone", widget: "string" }
+          - { label: "Email", name: "email", widget: "string" }
+          - { label: "Address Line 1", name: "address1", widget: "string" }
+          - { label: "Address Line 2", name: "address2", widget: "string" }
+          - { label: "Facebook URL", name: "facebook", widget: "string", required: false }
+          - label: "Lodge Hours"
+            name: "hours"
+            widget: "list"
+            fields:
+              - { label: "Day", name: "day", widget: "string" }
+              - { label: "Hours", name: "hours", widget: "string" }

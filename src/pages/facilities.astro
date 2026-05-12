@@ -1,0 +1,122 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import SnipcartButton from '../components/SnipcartButton.astro';
+import { getCollection } from 'astro:content';
+
+const rentals = (await getCollection('rentals')).sort((a, b) => a.data.order - b.data.order);
+---
+
+<BaseLayout title="Facilities & Rentals" description="Explore our banquet hall, lounge, Crystal Blue Pool, and kitchen. Book your next event at Jonesboro Elks Lodge #498.">
+  <PageHero title="Our Facilities" subtitle="From intimate gatherings to grand celebrations — we have the perfect space." backgroundImage="/images/hero-banquet.jpg" />
+
+  <section class="py-16">
+    <div class="max-w-7xl mx-auto px-4">
+      <!-- Facility Overview -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+        {[
+          {
+            name: 'Banquet Hall',
+            desc: 'Our centerpiece venue seats up to 250 guests with a full stage, sound system, and dance floor. Perfect for weddings, receptions, reunions, and corporate events.',
+            icon: 'M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4',
+            img: '/images/hero-banquet.jpg',
+          },
+          {
+            name: 'Members Lounge',
+            desc: 'A relaxed atmosphere with a full bar, pool tables, dart boards, big-screen TVs, and jukebox. The perfect spot to unwind after a long day.',
+            icon: 'M7 4V2a1 1 0 011-1h1a1 1 0 011 1v2m4 0V2a1 1 0 011-1h1a1 1 0 011 1v2M5 8h14M5 8a2 2 0 00-2 2v10a2 2 0 002 2h14a2 2 0 002-2V10a2 2 0 00-2-2M5 8v-2a2 2 0 012-2h10a2 2 0 012 2v2',
+            img: '/images/lounge-bar.jpg',
+          },
+          {
+            name: 'Crystal Blue Pool',
+            desc: 'Our beautiful outdoor pool is a summertime favorite. Open Memorial Day through Labor Day with season passes and daily admission available.',
+            icon: 'M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z',
+            img: '/images/pool.jpg',
+          },
+          {
+            name: 'Commercial Kitchen',
+            desc: 'A full commercial kitchen supports our weekly dining events and is available for caterers during rental events. All equipment meets health department standards.',
+            icon: 'M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z',
+            img: '/images/dining-food.jpg',
+          },
+        ].map(({ name, desc, icon, img }) => (
+          <div class="bg-white rounded-xl shadow-md border border-gray-100 overflow-hidden hover:shadow-xl transition-all">
+            <div class="h-48 overflow-hidden">
+              <img src={img} alt={name} class="w-full h-full object-cover" loading="lazy" />
+            </div>
+            <div class="p-8">
+              <div class="w-14 h-14 bg-gradient-to-br from-elks-purple to-purple-700 rounded-xl flex items-center justify-center mb-4">
+              <svg class="w-7 h-7 text-gold-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={icon}></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-heading font-bold text-elks-purple mb-3">{name}</h3>
+            <p class="text-gray-600 leading-relaxed">{desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Rental Packages -->
+      <SectionHeading title="Rental Packages" subtitle="Book your event at Lodge #498. Competitive rates with everything you need." />
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+        {rentals.map((rental) => (
+          <div class="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden">
+            <div class="bg-gradient-to-r from-elks-purple to-purple-700 px-8 py-6">
+              <h3 class="text-2xl font-heading font-bold text-white">{rental.data.title}</h3>
+              <div class="flex items-baseline gap-2 mt-2">
+                <span class="text-4xl font-bold text-gold-400">${rental.data.price}</span>
+                <span class="text-purple-200">per event</span>
+              </div>
+            </div>
+            <div class="p-8">
+              <div class="flex items-center gap-2 text-gray-600 mb-4">
+                <svg class="w-5 h-5 text-elks-purple" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                <span>Capacity: <strong>{rental.data.capacity} guests</strong></span>
+              </div>
+
+              {rental.data.amenities && (
+                <ul class="space-y-2 mb-6">
+                  {rental.data.amenities.map((amenity: string) => (
+                    <li class="flex items-center gap-2 text-sm text-gray-600">
+                      <svg class="w-4 h-4 text-green-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                      {amenity}
+                    </li>
+                  ))}
+                </ul>
+              )}
+
+              <div class="border-t pt-4">
+                <p class="text-sm text-gray-500 mb-3">Refundable deposit required to reserve:</p>
+                <SnipcartButton
+                  id={`rental-deposit-${rental.id}`}
+                  name={`${rental.data.title} — Rental Deposit`}
+                  price={rental.data.depositAmount}
+                  description={`Refundable deposit for ${rental.data.title} rental at Elks Lodge #498`}
+                  url="/facilities"
+                  label="Pay Deposit"
+                />
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Inquiry CTA -->
+      <div class="bg-gold-50 border border-gold-200 rounded-2xl p-8 text-center">
+        <h3 class="text-2xl font-heading font-bold text-elks-purple mb-3">Ready to Book?</h3>
+        <p class="text-gray-600 mb-6">Contact us to schedule a tour, check availability, or discuss your event needs.</p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href="/contact" class="px-6 py-3 bg-elks-purple hover:bg-purple-700 text-white font-bold rounded-lg transition-colors">
+            Contact Us
+          </a>
+          <a href="tel:+18709325498" class="px-6 py-3 bg-white border-2 border-elks-purple text-elks-purple font-bold rounded-lg hover:bg-purple-50 transition-colors">
+            Call (870) 932-5498
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

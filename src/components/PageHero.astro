@@ -1,0 +1,30 @@
+---
+interface Props {
+  title: string;
+  subtitle?: string;
+  backgroundImage?: string;
+}
+
+const { title, subtitle, backgroundImage } = Astro.props;
+---
+
+<section class="bg-gradient-to-br from-elks-dark via-purple-900 to-purple-800 relative overflow-hidden">
+  {backgroundImage && (
+    <div class="absolute inset-0">
+      <img src={backgroundImage} alt="" class="w-full h-full object-cover" loading="eager" />
+      <div class="absolute inset-0 bg-gradient-to-b from-elks-dark/80 via-purple-900/70 to-purple-800/80"></div>
+    </div>
+  )}
+  <div class="absolute inset-0 opacity-5">
+    <div class="absolute inset-0" style="background-image: url('data:image/svg+xml,<svg width=&quot;60&quot; height=&quot;60&quot; viewBox=&quot;0 0 60 60&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;><g fill=&quot;none&quot; fill-rule=&quot;evenodd&quot;><g fill=&quot;%23D4A843&quot; fill-opacity=&quot;0.4&quot;><path d=&quot;M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z&quot;/></g></g></svg>');"></div>
+  </div>
+  <div class="relative max-w-7xl mx-auto px-4 py-16 md:py-24 text-center">
+    <h1 class="text-4xl md:text-5xl font-heading font-bold text-white mb-3">{title}</h1>
+    {subtitle && <p class="text-lg text-purple-200 max-w-2xl mx-auto">{subtitle}</p>}
+  </div>
+  <div class="absolute bottom-0 left-0 right-0">
+    <svg viewBox="0 0 1440 40" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full">
+      <path d="M0 40V20C360 0 720 0 1080 20C1260 30 1350 35 1440 20V40H0Z" fill="white"/>
+    </svg>
+  </div>
+</section>
