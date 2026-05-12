@@ -17,7 +17,7 @@ const currentPath = Astro.url.pathname;
 
 <header class="bg-elks-dark text-white sticky top-0 z-50 shadow-lg">
   <!-- Top bar -->
-  <div class="bg-purple-900 text-purple-200 text-sm py-1.5">
+  <div class="bg-gray-800 text-gray-300 text-sm py-1.5">
     <div class="max-w-7xl mx-auto px-4 flex justify-between items-center">
       <span>Benevolent and Protective Order of Elks — Lodge #498</span>
       <div class="hidden sm:flex items-center gap-4">
@@ -54,8 +54,8 @@ const currentPath = Astro.url.pathname;
             class:list={[
               'px-3 py-2 rounded-md text-sm font-medium transition-colors',
               currentPath === item.href || (item.href !== '/' && currentPath.startsWith(item.href))
-                ? 'bg-purple-700 text-white'
-                : 'text-purple-100 hover:bg-purple-800 hover:text-white',
+                ? 'bg-gray-700 text-white'
+                : 'text-gray-300 hover:bg-gray-700 hover:text-white',
             ]}
           >
             {item.label}
@@ -66,7 +66,7 @@ const currentPath = Astro.url.pathname;
       <!-- Mobile menu button -->
       <button
         id="mobile-menu-btn"
-        class="lg:hidden text-white p-2 rounded-md hover:bg-purple-800 transition-colors"
+        class="lg:hidden text-white p-2 rounded-md hover:bg-gray-700 transition-colors"
         aria-label="Toggle menu"
       >
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -76,25 +76,25 @@ const currentPath = Astro.url.pathname;
     </div>
 
     <!-- Mobile Nav -->
-    <div id="mobile-menu" class="hidden lg:hidden mt-3 pb-3 border-t border-purple-700 pt-3">
+    <div id="mobile-menu" class="hidden lg:hidden mt-3 pb-3 border-t border-gray-700 pt-3">
       {navItems.map((item) => (
         <a
           href={item.href}
           class:list={[
             'block px-3 py-2 rounded-md text-base font-medium transition-colors',
             currentPath === item.href || (item.href !== '/' && currentPath.startsWith(item.href))
-              ? 'bg-purple-700 text-white'
-              : 'text-purple-100 hover:bg-purple-800 hover:text-white',
+              ? 'bg-gray-700 text-white'
+              : 'text-gray-300 hover:bg-gray-700 hover:text-white',
           ]}
         >
           {item.label}
         </a>
       ))}
-      <div class="mt-3 pt-3 border-t border-purple-700 flex items-center gap-4 px-3">
-        <a href="tel:+18709325498" class="text-purple-200 hover:text-gold-400 text-sm">
+      <div class="mt-3 pt-3 border-t border-gray-700 flex items-center gap-4 px-3">
+        <a href="tel:+18709325498" class="text-gray-300 hover:text-gold-400 text-sm">
           (870) 932-5498
         </a>
-        <button class="snipcart-checkout text-purple-200 hover:text-gold-400 text-sm cursor-pointer">
+        <button class="snipcart-checkout text-gray-300 hover:text-gold-400 text-sm cursor-pointer">
           Cart (<span class="snipcart-items-count">0</span>)
         </button>
       </div>

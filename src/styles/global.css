@@ -45,6 +45,6 @@
   h5,
   h6 {
     font-family: var(--font-heading);
-    color: var(--color-elks-purple);
+    color: #1f2937;
   }
 }

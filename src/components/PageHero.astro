@@ -8,11 +8,11 @@ interface Props {
 const { title, subtitle, backgroundImage } = Astro.props;
 ---
 
-<section class="bg-gradient-to-br from-elks-dark via-purple-900 to-purple-800 relative overflow-hidden">
+<section class="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 relative overflow-hidden">
   {backgroundImage && (
     <div class="absolute inset-0">
       <img src={backgroundImage} alt="" class="w-full h-full object-cover" loading="eager" />
-      <div class="absolute inset-0 bg-gradient-to-b from-elks-dark/80 via-purple-900/70 to-purple-800/80"></div>
+      <div class="absolute inset-0 bg-gradient-to-b from-gray-900/80 via-gray-800/70 to-gray-900/80"></div>
     </div>
   )}
   <div class="absolute inset-0 opacity-5">
@@ -20,7 +20,7 @@ const { title, subtitle, backgroundImage } = Astro.props;
   </div>
   <div class="relative max-w-7xl mx-auto px-4 py-16 md:py-24 text-center">
     <h1 class="text-4xl md:text-5xl font-heading font-bold text-white mb-3">{title}</h1>
-    {subtitle && <p class="text-lg text-purple-200 max-w-2xl mx-auto">{subtitle}</p>}
+    {subtitle && <p class="text-lg text-gray-200 max-w-2xl mx-auto">{subtitle}</p>}
   </div>
   <div class="absolute bottom-0 left-0 right-0">
     <svg viewBox="0 0 1440 40" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full">
