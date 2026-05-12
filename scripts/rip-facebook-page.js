@@ -67,7 +67,6 @@ async function ripFacebookPage() {
       images.forEach((img) => {
         const src = img.src;
         if (src && src.includes("scontent")) {
-          // Keep the full URL with query params - Facebook needs them
           urls.add(src);
         }
       });
