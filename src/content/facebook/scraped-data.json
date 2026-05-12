@@ -1,6 +1,6 @@
 {
-  "scraped": "2026-05-12T21:20:51.058Z",
-  "totalImages": 11,
+  "scraped": "2026-05-12T21:23:48.152Z",
+  "totalImages": 17,
   "images": [
     {
       "src": "/images/fb-rip-1.jpg",
@@ -55,6 +55,36 @@
     {
       "src": "/images/fb-rip-11.jpg",
       "alt": "Facebook Photo 11",
+      "caption": "Photo from Jonesboro Elks Lodge #498 Facebook page"
+    },
+    {
+      "src": "/images/fb-rip-12.jpg",
+      "alt": "Facebook Photo 12",
+      "caption": "Photo from Jonesboro Elks Lodge #498 Facebook page"
+    },
+    {
+      "src": "/images/fb-rip-13.jpg",
+      "alt": "Facebook Photo 13",
+      "caption": "Photo from Jonesboro Elks Lodge #498 Facebook page"
+    },
+    {
+      "src": "/images/fb-rip-14.jpg",
+      "alt": "Facebook Photo 14",
+      "caption": "Photo from Jonesboro Elks Lodge #498 Facebook page"
+    },
+    {
+      "src": "/images/fb-rip-15.jpg",
+      "alt": "Facebook Photo 15",
+      "caption": "Photo from Jonesboro Elks Lodge #498 Facebook page"
+    },
+    {
+      "src": "/images/fb-rip-16.jpg",
+      "alt": "Facebook Photo 16",
+      "caption": "Photo from Jonesboro Elks Lodge #498 Facebook page"
+    },
+    {
+      "src": "/images/fb-rip-17.jpg",
+      "alt": "Facebook Photo 17",
       "caption": "Photo from Jonesboro Elks Lodge #498 Facebook page"
     }
   ]
