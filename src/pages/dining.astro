@@ -23,9 +23,9 @@ import SectionHeading from '../components/SectionHeading.astro';
           <div class="bg-white rounded-xl shadow-md border border-gray-100 overflow-hidden hover:shadow-xl transition-all">
             <div class="relative h-40 overflow-hidden">
               <img src={img} alt={name} class="w-full h-full object-cover" loading="lazy" />
-              <div class={`absolute inset-0 bg-gradient-to-t ${color} opacity-60`}></div>
+              <div class={`absolute inset-0 bg-gradient-to-t ${color} opacity-30`}></div>
             </div>
-            <div class={`bg-gradient-to-r ${color} px-6 py-4`}>
+            <div class={`bg-gradient-to-r ${color} opacity-80 px-6 py-4`}>
               <div class="flex items-center justify-between">
                 <span class="text-white/80 text-sm font-bold uppercase tracking-wider">{day}</span>
                 <span class="text-white font-bold text-lg">{price}</span>
