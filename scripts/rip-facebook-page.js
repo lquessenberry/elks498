@@ -60,14 +60,15 @@ async function ripFacebookPage() {
       await page.waitForTimeout(2000);
     }
 
-    // Extract all image URLs with their original Facebook URLs
+    // Extract image URLs with Facebook links - simple approach that works
     const imageData = await page.evaluate(() => {
       const data = [];
       const images = document.querySelectorAll('img[src*="scontent"]');
+
       images.forEach((img) => {
         const src = img.src;
         if (src && src.includes("scontent")) {
-          // Find the parent link or container that has the Facebook post URL
+          // Find parent link for Facebook URL
           const parentLink = img.closest("a");
           const fbUrl = parentLink ? parentLink.href : null;
 
@@ -77,10 +78,11 @@ async function ripFacebookPage() {
           });
         }
       });
+
       return data;
     });
 
-    // Remove duplicates based on src
+    // Remove duplicates
     const uniqueImages = [];
     const seenSrc = new Set();
     imageData.forEach((img) => {
@@ -90,8 +92,7 @@ async function ripFacebookPage() {
       }
     });
 
-    const imageUrls = uniqueImages.map((img) => img.src);
-    console.log(`Found ${imageUrls.length} unique images`);
+    console.log(`Found ${uniqueImages.length} unique images`);
 
     // Create data directory if it doesn't exist
     if (!fs.existsSync(dataDir)) {
@@ -100,13 +101,13 @@ async function ripFacebookPage() {
 
     // Download images using axios
     const downloadedImages = [];
-    for (let i = 0; i < imageUrls.length; i++) {
-      const url = imageUrls[i];
+    for (let i = 0; i < uniqueImages.length; i++) {
+      const img = uniqueImages[i];
       try {
-        console.log(`Downloading image ${i + 1}/${imageUrls.length}: ${url}`);
+        console.log(`Downloading image ${i + 1}/${uniqueImages.length}`);
 
-        const filename = `fb-rip-${i + 1}.jpg`;
-        await downloadImage(url, filename);
+        const filename = `fb-post-${i + 1}.jpg`;
+        await downloadImage(img.src, filename);
 
         // Verify file was downloaded and has content
         const filepath = path.join(outputDir, filename);
@@ -115,9 +116,9 @@ async function ripFacebookPage() {
         if (stats.size > 100) {
           downloadedImages.push({
             src: `/images/${filename}`,
-            alt: `Facebook Photo ${i + 1}`,
+            alt: `Facebook Post ${i + 1}`,
             caption: `Photo from Jonesboro Elks Lodge #498 Facebook page`,
-            fbUrl: uniqueImages[i].fbUrl,
+            fbUrl: img.fbUrl,
           });
           console.log(`Downloaded: ${filename} (${stats.size} bytes)`);
         } else {
