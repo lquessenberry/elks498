@@ -60,19 +60,37 @@ async function ripFacebookPage() {
       await page.waitForTimeout(2000);
     }
 
-    // Extract all image URLs
-    const imageUrls = await page.evaluate(() => {
-      const urls = new Set();
+    // Extract all image URLs with their original Facebook URLs
+    const imageData = await page.evaluate(() => {
+      const data = [];
       const images = document.querySelectorAll('img[src*="scontent"]');
       images.forEach((img) => {
         const src = img.src;
         if (src && src.includes("scontent")) {
-          urls.add(src);
+          // Find the parent link or container that has the Facebook post URL
+          const parentLink = img.closest("a");
+          const fbUrl = parentLink ? parentLink.href : null;
+
+          data.push({
+            src: src,
+            fbUrl: fbUrl,
+          });
         }
       });
-      return Array.from(urls);
+      return data;
     });
 
+    // Remove duplicates based on src
+    const uniqueImages = [];
+    const seenSrc = new Set();
+    imageData.forEach((img) => {
+      if (!seenSrc.has(img.src)) {
+        seenSrc.add(img.src);
+        uniqueImages.push(img);
+      }
+    });
+
+    const imageUrls = uniqueImages.map((img) => img.src);
     console.log(`Found ${imageUrls.length} unique images`);
 
     // Create data directory if it doesn't exist
@@ -99,6 +117,7 @@ async function ripFacebookPage() {
             src: `/images/${filename}`,
             alt: `Facebook Photo ${i + 1}`,
             caption: `Photo from Jonesboro Elks Lodge #498 Facebook page`,
+            fbUrl: uniqueImages[i].fbUrl,
           });
           console.log(`Downloaded: ${filename} (${stats.size} bytes)`);
         } else {
