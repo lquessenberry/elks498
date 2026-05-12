@@ -15,7 +15,9 @@ const navItems = [
 const currentPath = Astro.url.pathname;
 ---
 
-<header class="bg-elks-dark text-white sticky top-0 z-50 shadow-lg">
+<header class="bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 text-white sticky top-0 z-50 shadow-lg relative overflow-hidden">
+  <!-- Subtle gradient overlay for depth -->
+  <div class="absolute inset-0 bg-gradient-to-r from-purple-900/5 via-transparent to-purple-900/5 pointer-events-none"></div>
   <!-- Top bar -->
   <div class="bg-gray-800 text-gray-300 text-sm py-1.5">
     <div class="max-w-7xl mx-auto px-4 flex justify-between items-center">
